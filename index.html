@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CALEB APPIAH - Personal Timetable</title>
+  <style>
+    /* ===== Base Styles ===== */
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0f001a, #2a004a, #0f001a);
+      background-size: 400% 400%;
+      animation: backgroundMove 10s ease infinite;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    @keyframes backgroundMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* ===== Glowing Header ===== */
+    h1 {
+      margin-top: 30px;
+      font-size: 2.3rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      background: linear-gradient(90deg, #d946ef, #a855f7, #7e22ce, #d946ef);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shine 5s infinite linear;
+      text-align: center;
+      text-shadow: 0 0 20px #a855f755;
+    }
+
+    @keyframes shine {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* ===== Timetable Grid ===== */
+    .timetable {
+      width: 90%;
+      max-width: 950px;
+      margin: 50px auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+    }
+
+    /* ===== Day Card ===== */
+    .day {
+      background: rgba(50, 0, 90, 0.8);
+      border-radius: 18px;
+      box-shadow: 0 0 25px #a855f755, inset 0 0 10px #a855f733;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      cursor: pointer;
+      position: relative;
+      transform: scale(1);
+    }
+
+    .day:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 35px #c084fc99;
+    }
+
+    .day-header {
+      padding: 20px;
+      font-size: 1.3rem;
+      text-align: center;
+      background: linear-gradient(135deg, #9333ea, #6b21a8);
+      letter-spacing: 1px;
+      text-shadow: 0 0 10px #fff3;
+    }
+
+    .subjects {
+      padding: 18px 25px;
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .subjects.active {
+      display: block;
+      animation: pop 0.5s ease;
+    }
+
+    @keyframes pop {
+      0% { opacity: 0; transform: translateY(15px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .subject {
+      margin: 10px 0;
+      padding: 12px;
+      border-left: 4px solid #a855f7;
+      background: rgba(255, 255, 255, 0.07);
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .subject:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transform: scale(1.02);
+      box-shadow: 0 0 10px #a855f755;
+    }
+
+    .subject strong {
+      color: #e9d5ff;
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      margin-top: auto;
+      padding: 20px;
+      text-align: center;
+      font-size: 0.95rem;
+      color: #ddd;
+      background: rgba(255, 255, 255, 0.03);
+      width: 100%;
+      box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(5px);
+      letter-spacing: 1px;
+      animation: fadeInFooter 1.5s ease;
+    }
+
+    @keyframes fadeInFooter {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    footer span {
+      color: #c084fc;
+      font-weight: 600;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.6rem;
+        margin-top: 25px;
+      }
+      .timetable {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+      footer {
+        font-size: 0.85rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>CALEB APPIAH - Personal Timetable</h1>
+
+  <div class="timetable">
+    <div class="day">
+      <div class="day-header">Monday</div>
+      <div class="subjects">
+        <div class="subject"><strong>7:00 - 8:30:</strong> Core Mathematics</div>
+        <div class="subject"><strong>8:45 - 10:50:</strong> Elective Mathematics</div>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="day-header">Tuesday</div>
+      <div class="subjects">
+        <div class="subject"><strong>7:00 - 8:30:</strong> Elective ICT</div>
+        <div class="subject"><strong>8:45 - 10:50:</strong> Elective Physics</div>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="day-header">Wednesday</div>
+      <div class="subjects">
+        <div class="subject"><strong>7:00 - 8:30:</strong> Elective Physics</div>
+        <div class="subject"><strong>8:45 - 10:50:</strong> Core Mathematics</div>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="day-header">Thursday</div>
+      <div class="subjects">
+        <div class="subject"><strong>7:00 - 8:30:</strong> Elective Chemistry</div>
+        <div class="subject"><strong>8:45 - 10:50:</strong> Chemistry</div>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="day-header">Friday</div>
+      <div class="subjects">
+        <div class="subject"><strong>7:00 - 8:30:</strong> English Language</div>
+        <div class="subject"><strong>8:45 - 10:50:</strong> Social Studies</div>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="day-header">Saturday</div>
+      <div class="subjects">
+        <div class="subject"><strong>All Day:</strong> Entertainment!!!</div>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="day-header">Sunday</div>
+      <div class="subjects">
+        <div class="subject"><strong>All Day:</strong> Integrated Science</div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 <span>CALEB APPIAH Technologies</span> — All Rights Reserved
+  </footer>
+
+  <script>
+    const days = document.querySelectorAll('.day');
+
+    days.forEach(day => {
+      day.addEventListener('click', () => {
+        const subjects = day.querySelector('.subjects');
+        const isActive = subjects.classList.contains('active');
+
+        // Close all others
+        document.querySelectorAll('.subjects').forEach(sub => sub.classList.remove('active'));
+
+        // Open the clicked one if not already open
+        if (!isActive) subjects.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
